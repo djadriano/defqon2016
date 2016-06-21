@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Olympics Component
+   ========================================================================== */
+
+@mixin olympics {
+  @include component(olympics) {
+    text-align: center;
+  }
+}
+
+/* 
+   Media Queries - Tablet
+   ========================================================================== */
+
+  @include min-screen(mq('tablet')) {
+
+    @include component (olympics) {
+      background-color: #eee;
+    }
+  }
+
+
+  /* 
+     Media Queries - Laptop
+     ========================================================================== */
+
+  @include min-screen(mq('laptop')) {
+
+    @include component (olympics) {
+      background-color: #eee;
+    }
+  }
+
+
+  /* 
+     Media Queries - Desktop
+     ========================================================================== */
+
+  @include min-screen(mq('desktop')) {
+
+    @include component (olympics) {
+      background-color: #eee;
+    }
+  }
+

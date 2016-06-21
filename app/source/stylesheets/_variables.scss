@@ -1,0 +1,32 @@
+$mq: (
+  'mobile' : 320px,
+  'tablet' : 768px,
+  'laptop' : 960px,
+  'desktop': 1280px,
+  'wide'   : 1600px
+);
+
+$colors: (
+  'black': #000,
+  'white': #fff
+);
+
+$fonts: (
+  'Arial'      : Arial,
+  'TradeGothic': 'TradeGothicW01-BoldCn20 675334',
+  'Futura'     : 'FuturaW01-ExtraBoldCond 774896'
+);
+
+$tradeGothic:(
+  'small' : (20px, 30px),
+  'medium': (40px, 50px),
+  'big'   : (60px, 70px)
+);
+
+$futura:(
+  'small' : (20px, 30px),
+  'medium': (40px, 50px),
+  'big'   : (60px, 70px)
+);
+
+$spaces: (5, 10, 20, 40, 60, 80);

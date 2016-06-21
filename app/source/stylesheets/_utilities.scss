@@ -1,0 +1,21 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: font('Arial');
+  line-height: 1.4;
+}
+
+@include utility(button) {
+  @extend %nk-button;
+}
+
+// ---------------------------------------
+// Generate utility classes
+// ---------------------------------------
+
+@include generate-color-clss;
+@include generate-spaces-clss;
+@include generate-font-size-clss('TradeGothic', $tradeGothic);
+@include generate-font-size-clss('Futura', $futura);

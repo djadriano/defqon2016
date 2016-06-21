@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Download Component
+   ========================================================================== */
+
+@mixin ipad {
+  @include component(ipad) {
+    background-color: #ccc;
+
+    @include descendent(title) {
+      @include vw(font-size, 20px);
+    }
+
+    @include descendent(iframe) {
+      // visibility: hidden;
+    }
+  }
+}
+
+

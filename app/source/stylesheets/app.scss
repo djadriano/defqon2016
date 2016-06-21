@@ -1,0 +1,24 @@
+// --------------------------------------------
+// Vendors Styles
+// --------------------------------------------
+
+@import '~normalize.css/normalize';
+@import '~sass-mediaqueries/media-queries';
+
+// --------------------------------------------
+// Base Styles
+// --------------------------------------------
+
+@import 'reset';
+@import 'functions';
+@import 'variables';
+@import 'bem';
+@import 'mixins';
+@import 'utilities';
+@import 'typography';
+
+// --------------------------------------------
+// Components Styles
+// --------------------------------------------
+
+@import 'components/index';

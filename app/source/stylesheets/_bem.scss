@@ -1,0 +1,52 @@
+// -----------------------------------------------------------------------------------------------------------------
+// Mixins to use the SUITCSS methodology.
+// This Sass version allow to use the nested classes and selectors. Solved the problem from PostCss Bem Plugin
+//
+// See more about:
+// https://suitcss.github.io/
+//
+// The mixins generate classes in SUITCSS naming conventions based on PostCss Bem Plugin, see more about:
+// https://github.com/ileri/postcss-bem
+// -----------------------------------------------------------------------------------------------------------------
+
+@mixin utility($name) {
+  .u-#{$name} {
+    @content;
+  }
+}
+
+@mixin modifier($name) {
+  &--#{$name} {
+    @content;
+  }
+}
+
+@mixin descendent($name) {
+  &-#{$name} {
+    @content;
+  }
+}
+
+@mixin when($name) {
+  &.is-#{$name} {
+    @content;
+  }
+}
+
+@mixin component($name) {
+  @if & {
+    &-#{$name} {
+      @content;
+    }
+  } @else {
+    .#{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin component-namespace($name) {
+  .#{$name} {
+    @content;
+  }
+}

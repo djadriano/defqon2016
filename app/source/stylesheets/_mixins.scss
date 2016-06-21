@@ -1,0 +1,100 @@
+// -------------------------------------------------------------------------------
+// Mixin to convert px to vw sizes
+//
+// How to use:
+// @include vw(font-size, 16px, 24px);
+//
+// Obs: If needs rewrite some property, use:
+// @include vw((padding-top, padding-bottom), 40px, $min-vw: mq('laptop'));
+// -------------------------------------------------------------------------------
+
+@mixin vw($properties, $min-value-size: 0, $max-value-size: $min-value-size, $min-vw: mq('mobile'), $max-vw: mq('wide')) {
+  $calcVw: vw($min-value-size, $max-value-size, $min-vw, $max-vw);
+
+  @each $property in $properties {
+    #{$property}: $calcVw;
+
+    @include max-screen($min-vw) {
+      #{$property}: $min-value-size;
+    }
+
+    @include min-screen($max-vw) {
+      #{$property}: $max-value-size;
+    }
+  }
+}
+
+@mixin generate-spaces-clss {
+  @each $space in $spaces {
+    @include utility(mt-#{$space}) {
+      margin-top: #{$space}px;
+    }
+
+    @include utility(mr-#{$space}) {
+      margin-right: #{$space}px;
+    }
+
+    @include utility(mb-#{$space}) {
+      margin-bottom: #{$space}px;
+    }
+
+    @include utility(ml-#{$space}) {
+      margin-left: #{$space}px;
+    }
+
+    @include utility(pt-#{$space}) {
+      padding-top: #{$space}px;
+    }
+
+    @include utility(pr-#{$space}) {
+      padding-right: #{$space}px;
+    }
+
+    @include utility(pb-#{$space}) {
+      padding-bottom: #{$space}px;
+    }
+
+    @include utility(pl-#{$space}) {
+      padding-left: #{$space}px;
+    }
+  }
+}
+
+@mixin generate-font-size-clss($name, $font-map) {
+  @each $font-type, $font-size in $font-map {
+
+    $toLowerCaseName: to_lower_case($name);
+
+    @include utility(t-#{$toLowerCaseName}-#{$font-type}) {
+      @include vw((font-size, line-height), nth($font-size, 1), nth($font-size, 2));
+      font-family: font(#{$name});
+
+      &.title {
+        text-transform: uppercase;
+      }
+    }
+
+  }
+}
+
+@mixin generate-color-clss {
+  @each $name, $color in $colors {
+    @include utility(c-#{$name}) {
+      color: $color;
+    }
+
+    @include utility(bg-#{$name}) {
+      background-color: $color;
+    }
+  }
+}
+
+%nk-button {
+  @extend .u-t-tradegothic-small;
+  @include vw((padding-top, padding-bottom), 10px);
+  @include vw((padding-left, padding-right), 20px);
+  border-radius: 6px;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+}

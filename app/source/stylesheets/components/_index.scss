@@ -1,0 +1,30 @@
+// -------------------------------------------------------------------------------------------------------
+// Load styles of components
+//
+// We are using the SUITCSS methodology, see more about:
+// https://suitcss.github.io/
+//
+// We are using the postcss-bem to generate classes in SUITCSS naming conventions, see more about:
+// https://github.com/ileri/postcss-bem
+// -------------------------------------------------------------------------------------------------------
+
+@import 'components/join';
+@import 'components/video';
+@import 'components/step';
+@import 'components/download';
+@import 'components/olympics';
+@import 'components/phone';
+
+// ----------------------------------------------------
+// Create the namespace of app and load components
+// ----------------------------------------------------
+
+@include component-namespace('nklck') {
+  @include join;
+  @include video;
+  @include step;
+  @include download;
+  @include ipad;
+  @include olympics;
+  @include phone;
+}

@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Step Component
+   ========================================================================== */
+
+@mixin step {
+  @include component( step) {
+
+    width: 100%;
+    // background-color: rgba(174, 202, 236, 0.62);
+    display: flex;
+    text-align: center;
+
+    @include descendent(container)  {
+      width: 100%;
+
+      @include descendent(title) {
+        text-align: center;
+        width: 100%;
+        display: block;
+      }
+    }
+
+    @include descendent(info) {
+      align-items: center;
+
+      @include descendent(container) {
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+/* 
+   Media Queries - Tablet
+   ========================================================================== */
+
+  @include min-screen(mq('tablet')) {
+
+    @include component (step) {
+      @include descendent (container) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      @include descendent (info) {
+        display: flex;
+
+        @include descendent (container) {
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+
+/* 
+   Media Queries - Laptop
+   ========================================================================== */
+
+  @include min-screen(mq('laptop')) {
+
+    @include component (step) {
+      background-color: #eee;
+    }
+  }
+
+
+/* 
+   Media Queries - Desktop
+   ========================================================================== */
+
+  @include min-screen(mq('desktop')) {
+
+    @include component (step) {
+      background-color: #eee;
+    }
+  }
+}

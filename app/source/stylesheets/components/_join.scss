@@ -1,0 +1,5 @@
+@mixin join {
+  @include component('join') {
+    text-align: center;
+  }
+}

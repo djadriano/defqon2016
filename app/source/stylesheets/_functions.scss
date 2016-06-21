@@ -1,0 +1,15 @@
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function mq($mq-value) {
+  @return map-get($mq, $mq-value);
+}
+
+@function font($font-name) {
+  @return map-get($fonts, $font-name);
+}
+
+@function vw($min-value-size: 0, $max-value-size: $min-value-size, $min-vw: mq('mobile'), $max-vw: mq('wide')) {
+  @return calc(#{$min-value-size} + #{strip-unit($max-value-size - $min-value-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+}
