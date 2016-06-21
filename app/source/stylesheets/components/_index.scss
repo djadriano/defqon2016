@@ -8,23 +8,12 @@
 // https://github.com/ileri/postcss-bem
 // -------------------------------------------------------------------------------------------------------
 
-@import 'components/join';
-@import 'components/video';
-@import 'components/step';
 @import 'components/download';
-@import 'components/olympics';
-@import 'components/phone';
 
 // ----------------------------------------------------
 // Create the namespace of app and load components
 // ----------------------------------------------------
 
 @include component-namespace('nklck') {
-  @include join;
-  @include video;
-  @include step;
   @include download;
-  @include ipad;
-  @include olympics;
-  @include phone;
 }
