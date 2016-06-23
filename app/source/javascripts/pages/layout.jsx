@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
+import io from 'socket.io-client';
 
 export default class LayoutApp extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    const socketIo = io.connect(window.location.host, { reconnect: true });
+    socketIo.on('connect', () => {
+      console.log('socket connected');
+    });
   }
 
   render() {

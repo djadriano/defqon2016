@@ -95,24 +95,12 @@ module.exports = {
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
+    'webpack/hot/dev-server',
     './app/source/javascripts/index.jsx'
   ],
   output: {
     path: path.resolve(rootPath, 'dist'),
     filename: "bundle.js"
-  },
-  devServer: {
-    proxy: {
-      '/posts': {
-        target: 'http://localhost:5000',
-        secure: false
-      },
-      '/posts/page/*': {
-        target: 'http://localhost:5000',
-        secure: false
-      }
-    }
   },
   module: {
      loaders: [
