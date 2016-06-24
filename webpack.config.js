@@ -65,7 +65,6 @@ var postCssPlugins = {
       foundries: 'google',
       hosted: './app/assets/fonts'
     }),
-    stylelint(),
     postcssImport({
       addDependencyTo: webpack
     })

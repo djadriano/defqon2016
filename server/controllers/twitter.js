@@ -2,7 +2,7 @@ import appConfig from '../helpers/config';
 import Twtr   from 'twitter';
 
 class Twitter {
-  constructor() {
+  constructor( io, socket ) {
     this.Tweet = new Twtr({
       consumer_key       : appConfig.twitter.consumer_key,
       consumer_secret    : appConfig.twitter.consumer_secret,
@@ -10,20 +10,27 @@ class Twitter {
       access_token_secret: appConfig.twitter.access_token_secret
     });
 
-    console.log('Twitter initialize');
+    this.io = io;
+    this.socket = socket;
   }
 
-  getTweets( io, socket ) {
-    this.Tweet.stream('statuses/filter', { track: 'defqon1, qdance' }, ( stream ) => {
-      stream.on('data', ( tweet ) => {
-        console.log('hardstyle');
-        console.log(tweet.id);
-        console.log(tweet.user.screen_name);
-        console.log(tweet.text);
+  subscribeStream() {
+    this.Tweet.stream('statuses/filter', {track: 'twitter'}, (stream) => {
+      stream.on('data', (tweet) => {
+        this.io.emit('hasNewContents', { tweets: tweet.text });
       });
 
-      stream.on('error', ( error ) => {
-        throw error;
+      stream.on('error', (error) => {
+        console.log(error);
+        this.io.emit('hasNewContents', { tweets: error });
+      });
+    });
+  }
+
+  getTweets() {
+    this.Tweet.get('search/tweets', {q: 'hardstyle'}, (error, tweets, response) => {
+      this.io.in( this.socket.id ).emit('getFeedFirstTime', {
+        tweets: tweets.statuses
       });
     });
   }

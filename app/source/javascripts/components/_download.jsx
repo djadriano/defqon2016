@@ -1,27 +1,52 @@
 import React from 'react';
+import io from 'socket.io-client';
 
 export default class DownloadComponent extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentWillMount() {
+    const socketIo = io.connect(window.location.host, { reconnect: true });
+
+    this.setState({
+      tweets: []
+    }, () => {
+      this.socketEvents(socketIo);
+    });
+  }
+
+  socketEvents(socketIo) {
+    socketIo.on('connect', () => {
+      console.log('socket connected');
+    });
+
+    socketIo.on('getFeedFirstTime', (data) => {
+      console.log('tweets', data.tweets);
+      this.setState({
+        tweets: data.tweets
+      })
+    });
+
+    socketIo.on('hasNewContents', (data) => {
+      console.log('tweets hasNewContents', data.tweets);
+    });
+  }
+
+  renderTweets(tweets) {
+    return(
+      <ul>
+        {this.state.tweets.map((item, i) => {
+          return <li key={i}>{item.text}</li>
+        })}
+      </ul>
+    )
+  }
+
   render() {
     return(
       <section className="nklck-download">
-        <div className="nklck-download-container">
-          <div className="nklck-download-items">
-            <h2>Nike+ Run Club</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <a href="">Baixe o app</a>
-          </div>
-
-          <div className="nklck-download-items">
-            <h2>Nike+ Training Club</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <a href="">Baixe o app</a>
-          </div>
-
-        </div>
+        {this.renderTweets()}
       </section>
     )
   }
