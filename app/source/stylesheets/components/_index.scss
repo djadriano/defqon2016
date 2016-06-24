@@ -8,12 +8,12 @@
 // https://github.com/ileri/postcss-bem
 // -------------------------------------------------------------------------------------------------------
 
-@import 'components/download';
+@import 'components/feed';
 
 // ----------------------------------------------------
 // Create the namespace of app and load components
 // ----------------------------------------------------
 
-@include component-namespace('nklck') {
-  @include download;
+@include component-namespace('defqon') {
+  @include feed;
 }

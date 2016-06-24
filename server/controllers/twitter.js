@@ -15,23 +15,24 @@ class Twitter {
   }
 
   subscribeStream() {
-    this.Tweet.stream('statuses/filter', {track: 'twitter'}, (stream) => {
+    this.Tweet.stream('statuses/filter', { track: 'Defqon1, dq1, dq16' }, (stream) => {
       stream.on('data', (tweet) => {
-        this.io.emit('hasNewContents', { tweets: tweet.text });
+        this.io.emit('hasNewContents', { tweets: tweet });
       });
 
       stream.on('error', (error) => {
         console.log(error);
-        this.io.emit('hasNewContents', { tweets: error });
       });
     });
   }
 
   getTweets() {
-    this.Tweet.get('search/tweets', {q: 'hardstyle'}, (error, tweets, response) => {
+    this.Tweet.get('search/tweets', { q: 'Defqon1' }, (error, tweets, response) => {
       this.io.in( this.socket.id ).emit('getFeedFirstTime', {
         tweets: tweets.statuses
       });
+
+      this.subscribeStream();
     });
   }
 }

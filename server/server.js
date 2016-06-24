@@ -33,6 +33,23 @@ var server = httpServer.listen(process.env.PORT || port, () => {
 
 });
 
+if (!isProduction) {
+  const webpack = require('webpack');
+  const WebpackDevServer = require('webpack-dev-server');
+  const webpackConfig = require('../webpack.config.js');
+
+  new WebpackDevServer(webpack(webpackConfig), {
+    hot: false,
+    noInfo: true,
+    quiet: false,
+    proxy: { '*': 'http://localhost:3000' },
+    stats: { colors: true },
+  }).listen(8080, 'localhost', err => {
+    if (err) console.log(err);
+    console.log('Webpack Dev Server listening at 8080');
+  });
+}
+
 io.on('connection', ( skt ) => {
 
   console.log('New client connected!');
@@ -40,6 +57,5 @@ io.on('connection', ( skt ) => {
   let twitter = new twitterController( io, skt );
 
   twitter.getTweets();
-  // twitter.subscribeStream();
 
 });

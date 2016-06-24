@@ -12,21 +12,14 @@ $colors: (
 );
 
 $fonts: (
-  'Arial'      : Arial,
-  'TradeGothic': 'TradeGothicW01-BoldCn20 675334',
-  'Futura'     : 'FuturaW01-ExtraBoldCond 774896'
+  'Arial' : Arial,
+  'Roboto': 'Roboto Condensed'
 );
 
-$tradeGothic:(
-  'small' : (20px, 30px),
-  'medium': (40px, 50px),
-  'big'   : (60px, 70px)
-);
-
-$futura:(
-  'small' : (20px, 30px),
-  'medium': (40px, 50px),
-  'big'   : (60px, 70px)
+$roboto:(
+  'small' : (16px, 20px),
+  'medium': (20px, 30px),
+  'big'   : (30px, 40px)
 );
 
 $spaces: (5, 10, 20, 40, 60, 80);

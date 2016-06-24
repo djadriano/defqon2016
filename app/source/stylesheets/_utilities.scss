@@ -3,12 +3,15 @@ html {
 }
 
 body {
-  font-family: font('Arial');
+  font-family: font('Roboto');
   line-height: 1.4;
+  background: #eee;
 }
 
-@include utility(button) {
-  @extend %nk-button;
+@include utility(is-not-list) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 // ---------------------------------------
@@ -17,5 +20,4 @@ body {
 
 @include generate-color-clss;
 @include generate-spaces-clss;
-@include generate-font-size-clss('TradeGothic', $tradeGothic);
-@include generate-font-size-clss('Futura', $futura);
+@include generate-font-size-clss('Roboto', $roboto);

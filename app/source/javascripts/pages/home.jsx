@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DownloadComponent from '../components/_download';
+import FeedComponent from '../components/_feed';
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class HomePage extends React.Component {
   render() {
     return(
       <div>
-        <DownloadComponent />
+        <FeedComponent />
       </div>
     )
   }

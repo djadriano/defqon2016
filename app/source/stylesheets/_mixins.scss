@@ -88,13 +88,3 @@
     }
   }
 }
-
-%nk-button {
-  @extend .u-t-tradegothic-small;
-  @include vw((padding-top, padding-bottom), 10px);
-  @include vw((padding-left, padding-right), 20px);
-  border-radius: 6px;
-  border: 0;
-  text-decoration: none;
-  cursor: pointer;
-}

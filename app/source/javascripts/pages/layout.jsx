@@ -10,7 +10,7 @@ export default class LayoutApp extends React.Component {
     return(
       <div>
         <header>
-          Header Component
+          <h1>Defqon1</h1>
         </header>
         <hr />
         {this.props.children}

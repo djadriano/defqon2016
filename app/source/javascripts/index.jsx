@@ -7,7 +7,7 @@ import AppStyle from '../stylesheets/app';
 import LayoutApp from './pages/layout';
 import HomePage from './pages/home';
 
-const app = document.getElementById('nklck');
+const app = document.getElementById('defqon');
 
 ReactDom.render((
   <Router history={hashHistory}>
