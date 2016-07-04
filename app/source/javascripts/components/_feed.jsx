@@ -63,20 +63,24 @@ export default class DownloadComponent extends React.Component {
   renderTweets(tweets) {
     return(
       <ul className="defqon-feed-list">
-        {this.state.tweets.map((item, i) => {
-          return (
-            <li className="defqon-feed-list-item" key={i}>
-              <h2 className="defqon-feed-list-profile">
-                <img src={ item.user.profile_image_url } />
-                <div className="defqon-feed-list-info">
-                  {item.user.name} <span className="defqon-feed-list-username">@{item.user.screen_name}</span>
-                </div>
-              </h2>
-              <p className="defqon-feed-list-tweet">{item.text}</p>
-              {this.figureTweet(item)}
-            </li>
-          )
-        })}
+        {
+          this.state.tweets.filter((item) => {
+            return item.text.search('RT') === -1;
+          }).map((item, i) => {
+            return (
+              <li className="defqon-feed-list-item" key={i}>
+                <h2 className="defqon-feed-list-profile">
+                  <img src={ item.user.profile_image_url } />
+                  <div className="defqon-feed-list-info">
+                    {item.user.name} <span className="defqon-feed-list-username">@{item.user.screen_name}</span>
+                  </div>
+                </h2>
+                <p className="defqon-feed-list-tweet">{item.text}</p>
+                {this.figureTweet(item)}
+              </li>
+            )
+          })
+        }
       </ul>
     )
   }
