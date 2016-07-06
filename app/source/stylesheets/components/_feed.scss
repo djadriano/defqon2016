@@ -4,7 +4,6 @@
 
 @mixin feed {
   @include component(feed) {
-
     @include descendent(list) {
       @extend .u-is-not-list;
       display: flex;
@@ -12,12 +11,13 @@
       flex-wrap: wrap;
 
       @include descendent(item) {
-        @include vw(padding, 10px);
+        // @include vw(padding, 10px);
         transform: translate3d(0,0,0);
         transition: all 300ms ease-in-out;
         background: #fff;
-        flex: 0 1 96%;
-        margin: 3% 2%;
+        flex: 0 1 100%;
+        padding: 1%;
+        margin: 2%;
 
         img {
           cursor: pointer;
@@ -26,22 +26,23 @@
         }
 
         &:hover {
-          transform: scale(1.1);
-          opacity: 1;
-          box-shadow: 3px 3px 5px -2px rgba(153,153,153,1);
+          // transform: scale(1.1);
+          // opacity: 1;
+          // box-shadow: 3px 3px 5px -2px rgba(153,153,153,1);
         }
 
-        @media screen and (min-width: 768px) {
-          flex: 0 1 46%;
+        @include min-screen(mq('tablet')) {
+          // flex: 0 1 46%;
         }
 
-        @media screen and (min-width: 1024px) {
-          flex: 0 1 31%;
-          margin: 1%;
+        @include min-screen(mq('laptop')) {
+          // flex: 0 1 31%;
+          // margin: 1%;
         }
 
-        @media screen and (min-width: 1280px) {
-          flex: 0 1 23%;
+        @include min-screen(mq('desktop')) {
+          // flex: 0 1 23%;
+          flex: 1 1 19%;
         }
       }
 
@@ -67,25 +68,7 @@
         color: #999;
       }
     }
-
   }
-
-
-/*
-   Media Queries - Tablet
-   ========================================================================== */
-   @include min-screen(mq('tablet')) {
-
-     @include component (download) {
-       @include descendent (container) {
-         display: flex;
-       }
-
-       @include descendent(items) {
-        flex: 1 1 auto;
-       }
-     }
-   }
 }
 
 

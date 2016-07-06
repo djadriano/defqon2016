@@ -8,12 +8,14 @@
 // https://github.com/ileri/postcss-bem
 // -------------------------------------------------------------------------------------------------------
 
+@import 'reset';
 @import 'components/feed';
 
 // ----------------------------------------------------
 // Create the namespace of app and load components
 // ----------------------------------------------------
 
-@include component-namespace('defqon') {
+@include component-namespace($namespace) {
+  @include reset;
   @include feed;
 }

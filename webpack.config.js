@@ -6,6 +6,7 @@ var path              = require('path');
 var webpack           = require('webpack');
 var precss            = require('precss');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var rootPath          = path.resolve( __dirname );
 
 // ------------------------------------------------------------------
@@ -38,7 +39,8 @@ var webpackPlugins = {
       'process.env': {
         'NODE_ENV': process.env.NODE_ENV
       }
-    })
+    }),
+    new ExtractTextPlugin("[name].css")
   ],
   production: [
     new webpack.optimize.UglifyJsPlugin({
@@ -109,12 +111,16 @@ module.exports = {
          loaders: ['react-hot', 'babel']
        },
        {
-          test: /\.scss$/,
-          loaders: ['style', 'css', 'postcss', 'sass']
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
        },
        {
-          test: /\.(png|jpg)$/,
-          loader: 'file-loader'
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+       },
+       {
+        test: /\.(woff2?|ttf|eot|svg|png|jpe?g|gif)$/,
+        loader: 'file'
        },
        {
         test: /\.(ttf|eot|svg|woff(2)?)(\w+)?$/,

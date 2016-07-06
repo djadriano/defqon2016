@@ -1,4 +1,38 @@
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
+/* ==========================================================================
+   Reset Component
+   ========================================================================== */
+
+@mixin reset {
+  * {
+    box-sizing: border-box;
+
+    &:after,
+    &:before {
+      box-sizing: border-box;
+    }
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    line-height: 1.4;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+  }
+
+  figure {
+    margin: 0;
+  }
 }
+
+
